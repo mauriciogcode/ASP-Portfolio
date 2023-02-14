@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "Contacto";
+}
+
+<h1>Formulario de Contacto</h1>
+@*asp-controller="Home" asp-action="Contact"*@
+<form  action="https://formsubmit.co/mauriciogcode@gmail.com" method="POST">
+    <div class="mb-3">
+        <label for="nombre" class="form-label" required>Nombre</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre" />
+    </div>
+    <div class="mb-3">
+        <label for="email" class="form-label" required>Email</label>
+        <input type="email" class="form-control" id="email" name="email" placeholder="Email" />
+
+    </div>
+    <div class="mb-3">
+        <label for="mensaje" class="form-label" required>Mensaje</label>
+        <textarea class="form-control" id="mensaje" name="mensaje" rows="3"></textarea>
+
+    </div>
+    <input type="hidden" name="_subject" value="Gracias por contactarme!">
+
+
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_autoresponse" value="Me contactactare configo cuando pueda. Gracias por comunicarte!">
+
+
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+
+

@@ -1,0 +1,107 @@
+﻿@model IEnumerable<ProjectDTO>
+
+@if (Model is not null)
+{
+
+
+    <div class="container m-5">
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+
+
+            @foreach (var project in Model)
+            {
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="@project.ImagenUrl" class="card-img-top" alt="imagen proyecto" />
+                        <div class="card-body">
+                            <h5 class="card-title">@project.Titulo</h5>
+                            <p class="card-text">@project.Descripcion</p>
+                        </div>
+                        <div class="card-footer">
+                            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModalLive">Visitar</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="modal fade bd-example-modal-lg" id="exampleModalLive" tabindex="-1" aria-labelledby="exampleModalLiveLabel" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog modal-lg ">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLiveLabel">@project.Titulo</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="card flex-md-row mb-4 box-shadow h-100">
+                                    <div class="row">
+                                    <div class="col-8">
+                                        <div class="card-body d-flex flex-column align-items-start">
+                                            <strong class="d-inline-block mb-2 text-primary">World</strong>
+                                            @foreach (var tech in project.UsedTecnologies )
+                                            {
+                                                    <h6> <span class="label label-default">@tech</span></h6>
+
+                                            }
+                                            <h3 class="mb-0">
+                                                <a class="text-dark" href="#">@project.Nombre</a>
+                                            </h3>
+
+                                            <div class="mb-1 text-muted">@project.Descripcion</div>
+                                            <p class="card-text mb-auto">@project.LongDescription</p>
+                                            <a href="@project.GithubLink">Github</a>
+                                        </div>
+                                    </div>
+                                        <div class="col-4">
+
+                                            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                                <ol class="carousel-indicators">
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                                                </ol>
+                                                <div class="carousel-inner">
+                                                    @foreach (var images in project.ImagenSlider)
+                                                    {
+                                                        <div class="carousel-item active">
+                                                            <img class="d-block w-100" src="@images" alt="First slide">
+                                                        </div>
+                                                    }
+
+                                                </div>
+                                                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Previous</span>
+                                                </a>
+                                                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                                    <span class="sr-only">Next</span>
+                                                </a>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+
+
+        </div>
+    </div>
+
+}
+
+
+@section Scripts
+    {
+
+    $('.myInput').click(function () {
+    $(".exampleModal").modal("show");
+    });
+
+}
